@@ -202,6 +202,11 @@ public class MessageListActivity extends AppCompatActivity {
         TableStat();
 
 
+
+        /*
+            message_detail_container is part of devices layout with large-screens w900dp
+            if this view is present, it is then automatically set to true.
+         */
         if (findViewById(R.id.message_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
