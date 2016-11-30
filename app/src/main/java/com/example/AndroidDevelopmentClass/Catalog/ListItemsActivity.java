@@ -1,6 +1,7 @@
 package com.example.AndroidDevelopmentClass.Catalog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,12 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +29,8 @@ import java.util.Date;
 public class ListItemsActivity extends AppCompatActivity {
 
     private static final String ACTIVITY_NAME = "ListItemsActivity";
-
+    Button radioButton;
+    Context mContext = this;
     /*
      todo: this is to take a picture and save it
     */
@@ -145,19 +149,74 @@ public class ListItemsActivity extends AppCompatActivity {
         });
 
 
+        radioButton = (Button) findViewById(R.id.radiobtn);
+
+        radioButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle(R.string.goBackQuestion);
+                // Add the buttons
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+
+
+                    /*
+                             * This method will be invoked when a button in the dialog is clicked.
+                             *
+                             * @param dialog The dialog that received the click.
+                             * @param id The button that was clicked (e.g.
+                             *            {@link DialogInterface#BUTTON1}) or the position
+                             *            of the item clicked.
+                     */
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        /**
+                         * Call this when your activity is done and should be closed.  The
+                         * ActivityResult is propagated back to whoever launched you via
+                         * onActivityResult().
+                         * from package android.app class {@link Activity};
+
+                         */
+                        finish();
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        //do nothing
+
+                    }
+                });
+
+                /*
+                You can provide a cancel function to the back key on the Android device itself
+                without tapping one of the buttons as well. If it is set to false, the back button
+                on the Android device is ignored.
+                 */
+                builder.setCancelable(true);
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
+
+
         CheckBox checkBox = (CheckBox) findViewById(R.id.chkbox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListItemsActivity.this);
-                alertDialogBuilder.setMessage(R.string.dialog_msessage)
-                        .setTitle(R.string.dialog_title)
+                alertDialogBuilder.setMessage(R.string.goBackQuestion)
+                        .setTitle(R.string.musicDialogTitle)
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent resultIntent = new Intent();
-                                resultIntent.putExtra(getString(R.string.responseKey), getString(R.string.responseValue));
-                                setResult(Activity.RESULT_OK, resultIntent);
+//                                Intent resultIntent = new Intent();
+//                                resultIntent.putExtra(getString(R.string.responseKey), getString(R.string.responseValue));
+//                                setResult(Activity.RESULT_OK, resultIntent);
                                 finish();
                             }
                         })
@@ -173,6 +232,7 @@ public class ListItemsActivity extends AppCompatActivity {
         });//end setOnCheckedChangeListener listener
 
     }//end onCreate method
+
 
     /**
      * @param s    {@link CharSequence} or {@link String} to be displayed in {@link Toast} msg.

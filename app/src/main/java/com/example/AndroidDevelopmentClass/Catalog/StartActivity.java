@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 public class StartActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "StartActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,19 +48,27 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+
+        Button toolbarButton = (Button) findViewById(R.id.toolBarButton);
+        toolbarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(ACTIVITY_NAME, "Clicked toolbarButton");
+                Intent intent = new Intent(StartActivity.this, TestToolbar.class);
+                startActivityForResult(intent, 555);
+            }
+        });
+
     }
-
-
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==5){
+        if (requestCode == 5) {
             Log.i(ACTIVITY_NAME, "Returned to StartActivity.onActivityResult");
         }
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             String messagePassed = data.getStringExtra("Response");
             Toast.makeText(getApplicationContext(), getString(R.string.passListItemActivity) + messagePassed, Toast.LENGTH_LONG).show();
         }
