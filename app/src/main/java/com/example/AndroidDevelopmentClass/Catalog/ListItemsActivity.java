@@ -210,7 +210,7 @@ public class ListItemsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListItemsActivity.this);
                 alertDialogBuilder.setMessage(R.string.goBackQuestion)
-                        .setTitle(R.string.musicDialogTitle)
+                        .setTitle("Dialog title")
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

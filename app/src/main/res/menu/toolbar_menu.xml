@@ -4,10 +4,9 @@
 
 
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/home48"
-        android:orderInCategory="101"
-        android:title="two"
+        android:id="@+id/newMessageToolbarButton"
+        android:icon="@drawable/chatman"
+        android:orderInCategory="3"
         app:showAsAction="always" />
 
     <item
@@ -31,14 +30,14 @@
     <item
         android:id="@+id/settings"
         android:icon="@drawable/settings48"
-        android:orderInCategory="105"
+        android:orderInCategory="2"
         android:title="three"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/music"
-        android:icon="@drawable/music48"
-        android:orderInCategory="106"
+        android:id="@+id/groupMessage"
+        android:icon="@drawable/groupmessage48"
+        android:orderInCategory="1"
         android:title="three"
         app:showAsAction="always" />
 

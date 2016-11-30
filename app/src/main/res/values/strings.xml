@@ -30,6 +30,6 @@
     <string name="title_activity_test_toolbar">TestToolbar</string>
     <string name="start_the_toolbar">Start the ToolBar</string>
     <string name="goBackQuestion">Do you want to go back?</string>
-    <string name="musicDialogTitle">Music Dialog</string>
+    <string name="SettingDialogTitle">Simple Dialog</string>
 
 </resources>
