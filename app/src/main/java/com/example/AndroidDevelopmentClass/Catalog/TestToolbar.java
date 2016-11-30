@@ -12,7 +12,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import static android.support.design.R.id.snackbar_action;
 import static android.support.design.R.id.snackbar_text;
 
 public class TestToolbar extends AppCompatActivity {
@@ -58,36 +56,28 @@ public class TestToolbar extends AppCompatActivity {
             }
         });
 
-
+        //getting a reference to the CoordinatorLayout for later use in the snackbars
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
-
-    }
+    }//end method onCreate
 
     public boolean onCreateOptionsMenu(Menu m) {
         getMenuInflater().inflate(R.menu.toolbar_menu, m);
         return true;
-
     }
 
     public boolean onOptionsItemSelected(MenuItem mi) {
         int id = mi.getItemId();
 
-
 //        MenuItem about = (MenuItem) findViewById(R.id.about);
 //        Assert.assertNotNull(about);
 //        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-
         switch (id) {
-
             case R.id.newMessageToolbarButton:
-
-
                 Toast.makeText(this, "New Message", Toast.LENGTH_SHORT).show();
 //                Log.i(ACTIVITY_NAME, "User going back to StartActivity");
 //                Intent homeIntent = new Intent(TestToolbar.this, StartActivity.class);
 //                startActivityForResult(homeIntent, 55);
-
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 // Get the layout inflater
@@ -99,7 +89,6 @@ public class TestToolbar extends AppCompatActivity {
                 builder.setView(customDialogLayout)
                         // Add action buttons
                         .setPositiveButton("Submit Message", new DialogInterface.OnClickListener() {
-
 
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -127,9 +116,8 @@ public class TestToolbar extends AppCompatActivity {
                         });
                 Dialog customDialog = builder.create();
                 customDialog.show();
-
-
                 break;
+
 
             case R.id.settings:
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
@@ -178,10 +166,7 @@ public class TestToolbar extends AppCompatActivity {
                     );
                 }
                 groupMessageSnackbar.show();
-
-
                 break;
-
 
             case R.id.about:
                 Snackbar aboutSnackbar = Snackbar.make(coordinatorLayout, "Ver 1.0 by Amir Ardalan", Snackbar.LENGTH_LONG);
@@ -206,15 +191,12 @@ public class TestToolbar extends AppCompatActivity {
                 startActivityForResult(weatherIntent, 555);
                 break;
 
-
             case R.id.chat:
                 Toast.makeText(this, "Chat started", Toast.LENGTH_SHORT).show();
                 Log.i(ACTIVITY_NAME, "User click Start Chat");
                 Intent chatIntent = new Intent(TestToolbar.this, MessageListActivity.class);
                 startActivityForResult(chatIntent, 55);
                 break;
-
-
         }
 
         return true;
